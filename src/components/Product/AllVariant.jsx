@@ -2,6 +2,8 @@ import { Button, Popconfirm, Space, Table } from "antd";
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 
+
+// eslint-disable-next-line react-refresh/only-export-components, react/display-name
 export default function () {
   const [allVariantData, setAllVariantData] = useState([]);
   useEffect(() => {
@@ -19,7 +21,7 @@ export default function () {
       title: "Serial",
       dataIndex: "index",
       key: "index",
-      render: (_, record, index) => <p>{index + 1} </p>,
+      render: (_, _record, index) => <p>{index + 1} </p>,
     },
     {
       title: "Products",
@@ -37,7 +39,7 @@ export default function () {
     {
       title: "Action",
       key: "action",
-      render: (_, record) => (
+      render: (_) => (
         <Space size="middle">
           <Button type="primary">Edit</Button>
 

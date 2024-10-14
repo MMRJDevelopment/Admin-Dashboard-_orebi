@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Space, Table, Tag, Button, Popconfirm, message } from "antd";
 import axios from "axios";
+import { titleCase } from "../Category/ApproveSubCategory";
 
 const columns = [
   {
@@ -110,7 +111,8 @@ export default function AllProduct() {
       title: "Product Name",
       dataIndex: "name",
       key: "name",
-      render: (text) => <p>{text}</p>,
+      render: (text) => <p>{titleCase(text)}</p>,
+
     },
     {
       title: "Image",

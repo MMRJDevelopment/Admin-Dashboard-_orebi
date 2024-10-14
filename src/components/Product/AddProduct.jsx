@@ -10,7 +10,7 @@ import draftToHtml from "draftjs-to-html";
 export default function AddProduct() {
   const [editorState, setEditorState] = useState(EditorState.createEmpty());
   const [datastore, setStoreData] = useState([]);
-  const [optiondata, setOptionData] = useState();
+  const [optiondata, setOptionData] = useState([]);
   const [productname, setProductName] = useState("");
   const [storename, setStoreName] = useState("");
 
@@ -25,7 +25,7 @@ export default function AddProduct() {
       "desption"
     );
     console.log(storename, "store");
-    const dat = await axios.post(
+    const data = await axios.post(
       "http://localhost:9000/api/v1/product/createProduct",
       {
         name: productname,
@@ -44,7 +44,7 @@ export default function AddProduct() {
       let arr = [];
       response.data.map((item) => {
         arr.push({
-          lable: item.storename,
+          label: item.storename,
           value: item._id,
         });
         setOptionData(arr);
@@ -60,19 +60,21 @@ export default function AddProduct() {
   console.log("option data: ", optiondata);
   return (
     <>
-      <Row>
+      <Row className="pt-4">
         <Col span={22}>
           <div>
-            <h5>Product Name :</h5>
+            <h5 className="mb-2 font-sans text-base">Product Name :</h5>
             <Input
               onChange={(e) => setProductName(e.target.value)}
               placeholder="Enter Name"
             />
-            <h5>Product Description :</h5>
+            <h5 className="my-4 font-sans text-base font-normal">
+              Product Description :
+            </h5>
             <Editor
               editorState={editorState}
               wrapperClassName="demo-wrapper"
-              editorClassName="demo-editor"
+              editorClassName="border border-slate-300 rounded-lg "
               onEditorStateChange={onEditorStateChange}
             />
             <h5 style={{ marginTop: "30px" }}>All Store Name Enter</h5>
